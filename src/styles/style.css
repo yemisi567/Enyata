@@ -1,0 +1,50 @@
+::-webkit-scrollbar {
+  width: 5px;
+  opacity: 0.2;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ECEEF2;
+  border-radius: 5px;
+}
+
+html {
+  font-size:  62.5%;
+  height: -webkit-fill-available;
+}
+.textOnInput {
+  position: relative;
+  
+}
+.textOnInput label {
+  position: absolute;
+  top: -15px;
+  left: 23px;
+  padding: 2px;
+  z-index: 1;
+  
+}
+.textOnInput label:after {
+  content: " ";
+  background-color: white;
+  width: 100%;
+  height: 13px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset; 
+}
+.ant-skeleton .ant-skeleton-content .ant-skeleton-title {
+  height: 48px !important;
+  width: 100% !important;
+}
+.ant-skeleton .ant-skeleton-content .ant-skeleton-paragraph >li {
+  height: 48px !important;
+}
+.ant-skeleton-content .ant-skeleton-paragraph >li +li {
+  width: 100% !important;
+}
