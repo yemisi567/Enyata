@@ -100,13 +100,18 @@ const LoginPage: React.FC = () => {
                   </Button>
                   <div className="text-center mt-6">
                     <p className="text-blue font-normal text-sm">
-                      Forgot password?
+                      <a href="/login"> Forgot password?</a>
                     </p>
                   </div>
                   <div className="text-smm font-normal text-darkgary text-center mt-[64px]">
-                    <span className="underline">Privacy Policy</span>
+                    <a href="/login" className="underline">
+                      Privacy Policy
+                    </a>
                     <span className="text-[#B0B9C8]"> and</span>{" "}
-                    <span className="underline"> Terms of services</span>
+                    <a href="/login" className="underline">
+                      {" "}
+                      Terms of services
+                    </a>
                   </div>
                 </form>
               </div>

@@ -38,7 +38,8 @@ export default function Details() {
           <Skeleton
             avatar
             paragraph={{
-              rows: 4,
+              rows: 3,
+              width: 150
             }}
           />
         </div>

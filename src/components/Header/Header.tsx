@@ -16,7 +16,7 @@ export default function Header() {
   }
 
   return (
-    <div className="w-full bg-white flex items-center h-[7.2rem] border-b border-b-[#eceef2] shadow-sm py-0 px-48 c:px-10 mb-3 shadow-[0px 1px 5px rgba(0, 0, 0, 0.03)]">
+    <div className="w-full bg-white flex items-center h-[6.2rem] border-b border-b-[#eceef2] shadow-sm py-0 px-48 c:px-10 mb-3 shadow-[0px 1px 5px rgba(0, 0, 0, 0.03)]">
       {location.pathname.includes("details") && (
         <button
           className="flex items-center gap-8 max-[768px]:ml-20"
@@ -29,23 +29,23 @@ export default function Header() {
       )}
 
       <div
-        className={cn("flex items-center gap-x-10 ml-auto mr-24", {
+        className={cn("flex items-center gap-x-10 ml-auto", {
           hidden: location.pathname.includes("details") && isSmallerScreen,
         })}
       >
-        <div className="cursor-pointer mr-24">
+        <div className="cursor-pointer mr-[20px]">
           <Notification />
         </div>
-        <div className="h-20 w-[1.5px] bg-[#E7E7E7]  mr-24" />
+        <div className="h-[20px] w-[1.5px] bg-[#E7E7E7] mr-[20px]" />
         <div>
           <div className="flex items-center gap-[0.8rem]">
             <AvatarIcon />
-            <span className="flex items-center cursor-pointer gap-[1.6rem] ml-24">
+            <span className="flex items-center cursor-pointer gap-[1.6rem] ml-[20px]">
               <span className="text-sm font-medium capitalize">
                 Alegbe Yemisi
               </span>
             </span>
-            <span className="ml-48">
+            <span className="ml-32">
               <MoreIcon />
             </span>
           </div>

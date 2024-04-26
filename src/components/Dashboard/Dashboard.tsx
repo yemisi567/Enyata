@@ -5,7 +5,12 @@ import { IFilms } from "../../utils/helpers/types/interfaces";
 import { Table } from "../Table/Table";
 import { Card } from "../Card/Card";
 import { useNavigate } from "react-router-dom";
-import { useGetFilms } from "../../hooks/queries";
+import {
+  useGetFilms,
+  useGetPeople,
+  useGetSpecies,
+  useGetStarShips,
+} from "../../hooks/queries";
 import { Skeleton } from "antd";
 
 const columns: ColumnDef<IFilms>[] = [
@@ -74,66 +79,96 @@ export default function Dashboard() {
     navigate(`/details/${id}?viewFrom=overview`);
   };
 
-  const { data, isLoading } = useGetFilms();
+  const { data: filmData, isLoading: isFilmLoading } = useGetFilms();
+  const { data: peopleData, isLoading: isPeopleLoading } = useGetPeople();
+  const { data: specieData, isLoading: isSpecieLoading } = useGetSpecies();
+  const { data: starshipData, isLoading: isStarshipLoading } =
+    useGetStarShips();
 
   return (
     <div className="w-full">
-      <div className="flex gap-[6rem] mt-32">
-        <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
-          <div className="flex justify-between items-center">
-            <p className="text-base text-textgray font-bold">Films</p>
-            <div className="h-[2.7rem] w-[2.7rem] bg-[#A9FFE0] rounded-r5 " />
+      <div className="flex gap-[6rem] mt-[36px]">
+        {(isFilmLoading ||
+          isSpecieLoading ||
+          isPeopleLoading ||
+          isStarshipLoading) && (
+          <div className="flex gap-y-[25px] gap-[6rem]">
+            <Skeleton.Button active={true} size={"large"} shape={"default"} />
+            <Skeleton.Button active={true} size={"large"} shape={"default"} />
+            <Skeleton.Button active={true} size={"large"} shape={"default"} />
+            <Skeleton.Button active={true} size={"large"} shape={"default"} />
           </div>
-          <p className="text-base text-textgray font-bold mt-24">200</p>
-          <p className="text-[9px] text-green font-normal mt-4">
-            20 More than yesterday
-          </p>
-        </Card>
-        <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
-          <div className="flex justify-between items-center">
-            <p className="text-base text-textgray font-bold">Starship</p>
-            <div className="h-[2.7rem] w-[2.7rem] bg-[#A9C1FF] rounded-r5 " />
-          </div>
-          <p className="text-base text-textgray font-bold mt-24">200</p>
-          <p className="text-[9px] text-green font-normal mt-4">
-            20 More than than yesterday
-          </p>
-        </Card>
-        <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
-          <div className="flex justify-between items-center">
-            <p className="text-base text-textgray font-bold">People</p>
-            <div className="h-[2.7rem] w-[2.7rem] bg-[#FFA9EC] rounded-r5 " />
-          </div>
-          <p className="text-base text-textgray font-bold mt-24">200</p>
-          <p className="text-[9px] text-green font-normal mt-4">
-            20 More than than yesterday
-          </p>
-        </Card>
-        <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
-          <div className="flex justify-between items-center">
-            <p className="text-base text-textgray font-bold">Species</p>
-            <div className="h-[2.7rem] w-[2.7rem] bg-[#FDFFA9] rounded-r5 " />
-          </div>
-          <p className="text-base text-textgray font-bold mt-24">200</p>
-          <p className="text-[9px] text-green font-normal mt-4">
-            20 More than than yesterday
-          </p>
-        </Card>
+        )}
+        {!isFilmLoading &&
+          !isPeopleLoading &&
+          !isStarshipLoading &&
+          !isSpecieLoading && (
+            <>
+              <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
+                <div className="flex justify-between items-center">
+                  <p className="text-base text-textgray font-bold">Films</p>
+                  <div className="h-[2.7rem] w-[2.7rem] bg-[#A9FFE0] rounded-r5 " />
+                </div>
+                <p className="text-base text-textgray font-bold mt-24">
+                  {filmData?.count || "200"}
+                </p>
+                <p className="text-[9px] text-green font-normal mt-4">
+                  {filmData?.count || "200"} More than yesterday
+                </p>
+              </Card>
+              <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
+                <div className="flex justify-between items-center">
+                  <p className="text-base text-textgray font-bold">Starship</p>
+                  <div className="h-[2.7rem] w-[2.7rem] bg-[#A9C1FF] rounded-r5 " />
+                </div>
+                <p className="text-base text-textgray font-bold mt-24">
+                  {starshipData?.count || "200"}
+                </p>
+                <p className="text-[9px] text-green font-normal mt-4">
+                  {starshipData?.count || "200"} More than than yesterday
+                </p>
+              </Card>
+              <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
+                <div className="flex justify-between items-center">
+                  <p className="text-base text-textgray font-bold">People</p>
+                  <div className="h-[2.7rem] w-[2.7rem] bg-[#FFA9EC] rounded-r5 " />
+                </div>
+                <p className="text-base text-textgray font-bold mt-24">
+                  {peopleData?.count || "200"}
+                </p>
+                <p className="text-[9px] text-green font-normal mt-4">
+                  {peopleData?.count || "200"} More than than yesterday
+                </p>
+              </Card>
+              <Card classNames="w-[20.8rem] h-[13rem] !border-transparent shadow-lg shadow-textgray/25">
+                <div className="flex justify-between items-center">
+                  <p className="text-base text-textgray font-bold">Species</p>
+                  <div className="h-[2.7rem] w-[2.7rem] bg-[#FDFFA9] rounded-r5 " />
+                </div>
+                <p className="text-base text-textgray font-bold mt-24">
+                  {specieData?.count || "200"}
+                </p>
+                <p className="text-[9px] text-green font-normal mt-4">
+                  {specieData?.count || "200"} More than than yesterday
+                </p>
+              </Card>
+            </>
+          )}
       </div>
 
       <div className="w-full mt-[6rem] pb-32">
         <p className="text-borderlight text-base font-normal mb-24">Films</p>
-        {isLoading && (
-          <div className="flex flex-col gap-y-[25px]">
+        {isFilmLoading && (
+          <div className="flex flex-col gap-y-[25px] ">
             <Skeleton />
             <Skeleton />
             <Skeleton />
           </div>
         )}
-        {data && (
+        {filmData && (
           <Table
             columns={columns}
-            data={data.results}
+            data={filmData.results}
             handleRowClick={handleRowClick}
           />
         )}

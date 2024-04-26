@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { cn } from "../../utils/helpers";
 import Logo from "../../utils/Icons/Logo";
 import Overview from "../../utils/Icons/Overview";
 
@@ -32,7 +31,7 @@ export default function SideBar() {
         </div>
 
         <div className="flex-2 overflow-auto pb-40 mt-20">
-          <ul className={cn("pt-2 pl-20 max-[900px]:pl-10 pr-20")}>
+          <ul className={"pt-2 pl-20 max-[900px]:pl-10 pr-20"}>
             {Menus.map((menu, index) => (
               <>
                 <NavLink
@@ -44,14 +43,12 @@ export default function SideBar() {
                       : "text-white mb-[2.4rem] font-medium text-sm gap-x-4 flex items-center cursor-pointer h-[4.5rem] px-8 transition duration-200 hover:bg-blue hover:text-white rounded-md";
                   }}
                 >
-                  <span
-                    className={cn("text-2xl pl-10 block float-left", {
-                      "ml-[6px]": menu.title !== "Overview",
-                    })}
-                  >
-                    {menu.icon}
-                  </span>
-                  <span className="flex-1 duration-200 pl-4">{menu.title}</span>
+                  <div className={"flex gap-x-[14px]"}>
+                    <div className={"text-2xl pl-10"}>{menu.icon}</div>
+                    <div className={"flex-1 duration-200 pl-4"}>
+                      {menu.title}
+                    </div>
+                  </div>
                 </NavLink>
               </>
             ))}
