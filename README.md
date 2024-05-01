@@ -1,70 +1,217 @@
-# Getting Started with Create React App
+# WriteFlow
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, distraction-free writing editor built with React, TypeScript, and Supabase. WriteFlow provides a seamless writing experience with real-time collaboration, auto-save functionality, and cloud synchronization.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **🎯 Distraction-Free Writing**: Clean, minimal interface focused on content creation
+- **💾 Auto-Save**: Never lose your work with automatic saving
+- **☁️ Cloud Sync**: Access your documents from anywhere with cloud synchronization
+- **📱 Mobile Responsive**: Optimized experience across all devices
+- **🎨 Rich Text Editing**: Powerful editor with formatting, tables, and media support
+- **📄 Export Options**: Export documents in multiple formats (DOCX, TXT)
+- **🔍 Document Search**: Quickly find documents with powerful search functionality
+- **⭐ Organization**: Star, archive, and tag your documents for better organization
+- **🌙 Dark Mode**: Eye-friendly dark theme for extended writing sessions
+- **📊 Writing Analytics**: Word count, character count, and reading time tracking
 
-### `npm start`
+## 🚀 Quick Start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js 16+
+- npm or yarn
+- Supabase account
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/yemisi567/writeflow.git
+   cd writeflow
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Environment Setup**
 
-### `npm run eject`
+   ```bash
+   cp env.example .env.local
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Update `.env.local` with your Supabase credentials:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```env
+   REACT_APP_SUPABASE_URL=
+   REACT_APP_SUPABASE_ANON_KEY=
+   REACT_APP_ENCRYPTION_KEY=
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Database Setup**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   # Run the SQL script in your Supabase dashboard
+   cat supabase-setup.sql
+   ```
 
-## Learn More
+5. **Start development server**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. **Open your browser**
+   Navigate to `http://localhost:3000`
 
-### Code Splitting
+## 📸 Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Desktop Experience
 
-### Analyzing the Bundle Size
+### Mobile Experience
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🏗️ Tech Stack
 
-### Making a Progressive Web App
+### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **TipTap** - Rich text editor
+- **React Router** - Navigation
+- **React Hot Toast** - Notifications
 
-### Advanced Configuration
+### Backend & Database
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Supabase** - Backend as a Service
+- **PostgreSQL** - Database
+- **Row Level Security (RLS)** - Data security
 
-### Deployment
+### Development Tools
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Service Worker** - Offline support
 
-### `npm run build` fails to minify
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+writeflow/
+├── public/
+│   ├── favicon.svg          # App favicon
+│   ├── manifest.json        # PWA manifest
+│   ├── sw.js               # Service worker
+│   └── robots.txt          # SEO robots file
+├── src/
+│   ├── components/         # React components
+│   │   ├── Editor/        # TipTap editor components
+│   │   ├── Header/        # App header
+│   │   ├── Sidebar/       # Document sidebar
+│   │   ├── MobileSidebar/ # Mobile navigation
+│   │   └── StatusBar/     # Bottom status bar
+│   ├── config/            # Configuration files
+│   ├── context/           # React context providers
+│   ├── hooks/             # Custom React hooks
+│   ├── lib/               # Utility libraries
+│   └── utils/             # Helper functions
+├── supabase-setup.sql     # Database schema
+└── package.json
+```
+
+## 🔧 Configuration
+
+### Supabase Setup
+
+1. Create a new Supabase project
+2. Run the provided SQL schema:
+
+   ```sql
+   -- See supabase-setup.sql for complete schema
+   CREATE TABLE documents (
+     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     title TEXT NOT NULL,
+     content JSONB NOT NULL DEFAULT '[]',
+     last_modified TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+     is_starred BOOLEAN DEFAULT FALSE,
+     is_archived BOOLEAN DEFAULT FALSE,
+     tags TEXT[] DEFAULT '{}',
+     word_count INTEGER DEFAULT 0,
+     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+   );
+   ```
+
+3. Enable Row Level Security (RLS) policies
+4. Update your environment variables
+
+### Environment Variables
+
+```env
+REACT_APP_SUPABASE_URL=
+REACT_APP_SUPABASE_ANON_KEY=
+REACT_APP_ENCRYPTION_KEY=
+```
+
+## 🤝 Contributing
+
+I welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### Development Workflow
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+### Code Style
+
+- Use TypeScript for type safety
+- Follow ESLint configuration
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [TipTap](https://tiptap.dev/) - Rich text editor
+- [Supabase](https://supabase.com/) - Backend infrastructure
+- [Tailwind CSS](https://tailwindcss.com/) - Styling framework
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+
+## 📞 Support
+
+- 📧 Email: alegbeyemi@gmail.com
+
+## 🗺️ Roadmap
+
+- [ ] **v1.1**: Real-time collaboration improvements
+- [ ] **v1.2**: Advanced export formats (PDF, Markdown)
+- [ ] **v1.3**: Team workspaces and permissions
+- [ ] **v1.4**: AI-powered writing assistance
+- [ ] **v1.5**: Plugin system for extensions
+- [ ] **v2.0**: Native mobile applications
+
+---
+
+<div align="center">
+  <p>Built with ❤️ by Mojisola Alegbe</p>
+  <p>
+    <a href="https://mojisolaalegbe.com/">Website</a> •
+    <a href="https://github.com/yemisi567">GitHub</a> •
+    <a href="https://www.linkedin.com/in/mojisola-alegbe">Linkedin</a>
+  </p>
+</div>

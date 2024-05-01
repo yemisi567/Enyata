@@ -1,2 +1,321 @@
-@import "./styles/tailwind.css";
-@import './styles/style.css'
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+  
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl;
+  }
+  
+  h2 {
+    @apply text-3xl;
+  }
+  
+  h3 {
+    @apply text-2xl;
+  }
+  
+  h4 {
+    @apply text-xl;
+  }
+  
+  h5 {
+    @apply text-lg;
+  }
+  
+  h6 {
+    @apply text-base;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply text-gray-700 dark:text-gray-300 leading-relaxed;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply text-gray-900 dark:text-gray-100 font-semibold;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-primary-300 dark:border-primary-600 pl-4 text-gray-600 dark:text-gray-400 italic my-4;
+  }
+  
+  .prose code {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+  
+  .prose pre {
+    @apply bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-x-auto;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  .prose ul {
+    @apply list-disc list-inside ml-4 space-y-1;
+  }
+  
+  .prose ol {
+    @apply list-decimal list-inside ml-4 space-y-1;
+  }
+  
+  .prose li {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+  
+  .prose a {
+    @apply text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline;
+  }
+  
+  .prose img {
+    @apply rounded-lg shadow-soft;
+  }
+  
+  .code-block {
+    @apply bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg my-4;
+  }
+  
+  .code-block pre {
+    @apply p-4 overflow-x-auto;
+  }
+  
+  .code-block code {
+    @apply font-mono text-sm;
+  }
+  
+  /* Basic syntax highlighting for code blocks */
+  .code-block pre code {
+    @apply text-gray-900 dark:text-white;
+  }
+  
+  /* Language-specific highlighting */
+  .code-block.language-javascript pre code,
+  .code-block.language-js pre code {
+    color: #d4d4d4;
+  }
+  
+  .code-block.language-javascript pre code .keyword,
+  .code-block.language-js pre code .keyword {
+    color: #569cd6;
+  }
+  
+  .code-block.language-javascript pre code .string,
+  .code-block.language-js pre code .string {
+    color: #ce9178;
+  }
+  
+  .code-block.language-javascript pre code .comment,
+  .code-block.language-js pre code .comment {
+    color: #6a9955;
+  }
+  
+  .code-block.language-python pre code {
+    color: #d4d4d4;
+  }
+  
+  .code-block.language-python pre code .keyword {
+    color: #569cd6;
+  }
+  
+  .code-block.language-python pre code .string {
+    color: #ce9178;
+  }
+  
+  .code-block.language-python pre code .comment {
+    color: #6a9955;
+  }
+  
+  .ProseMirror table {
+    @apply border-collapse table-auto w-full my-4;
+  }
+  
+  .ProseMirror th,
+  .ProseMirror td {
+    @apply border border-gray-300 dark:border-gray-600 px-3 py-2 text-left;
+  }
+  
+  .ProseMirror th {
+    @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+  }
+  
+  .ProseMirror .selectedCell {
+    @apply bg-primary-100 dark:bg-primary-900/20;
+  }
+  
+  .ProseMirror video {
+    @apply max-w-full h-auto rounded-lg my-4;
+  }
+  
+  .ProseMirror .video-container {
+    @apply my-4 text-center;
+  }
+  
+  .ProseMirror .video-container video {
+    @apply max-w-full h-auto rounded-lg shadow-lg;
+  }
+  
+  .ProseMirror iframe[src*="youtube"] {
+    @apply rounded-lg my-4;
+  }
+  
+  .prose table {
+    @apply w-full border-collapse border border-gray-300 dark:border-gray-600;
+  }
+  
+  .prose th, .prose td {
+    @apply border border-gray-300 dark:border-gray-600 px-3 py-2 text-left;
+  }
+  
+  .prose th {
+    @apply bg-gray-50 dark:bg-gray-800 font-semibold;
+  }
+
+  /* TipTap Editor Styles */
+  .ProseMirror {
+    outline: none;
+    padding: 0;
+    margin: 0;
+    min-height: 200px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #374151;
+    background: transparent;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .ProseMirror {
+      font-size: 16px;
+    }
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #9ca3af;
+    pointer-events: none;
+    height: 0;
+  }
+
+  .ProseMirror h1 {
+    @apply text-2xl font-bold text-gray-900 dark:text-white mt-6 mb-4;
+  }
+
+  .ProseMirror h2 {
+    @apply text-xl font-bold text-gray-900 dark:text-white mt-5 mb-3;
+  }
+
+  .ProseMirror h3 {
+    @apply text-lg font-bold text-gray-900 dark:text-white mt-4 mb-2;
+  }
+
+  .ProseMirror blockquote {
+    @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 my-4;
+  }
+
+  .ProseMirror code {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .ProseMirror pre {
+    @apply bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-x-auto my-4;
+  }
+
+  .ProseMirror pre code {
+    @apply bg-transparent p-0 text-sm;
+  }
+
+  .ProseMirror hr {
+    @apply border-t border-gray-300 dark:border-gray-600 my-6;
+  }
+
+  .ProseMirror strong {
+    @apply font-semibold text-gray-900 dark:text-white;
+  }
+
+  .ProseMirror em {
+    @apply italic;
+  }
+
+  .ProseMirror u {
+    @apply underline;
+  }
+
+  .ProseMirror s {
+    @apply line-through;
+  }
+
+  .ProseMirror img {
+    @apply w-72 h-72 rounded-lg my-4 object-cover;
+  }
+
+  @media (max-width: 640px) {
+    .ProseMirror img {
+      @apply w-full max-w-sm h-auto;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Selection styles */
+::selection {
+  @apply bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-100;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+/* Dark mode transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
