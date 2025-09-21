@@ -4,18 +4,18 @@ A modern, distraction-free writing editor built with React, TypeScript, and Supa
 
 ## ✨ Features
 
-- **🎯 Distraction-Free Writing**: Clean, minimal interface focused on content creation
-- **💾 Auto-Save**: Never lose your work with automatic saving
-- **☁️ Cloud Sync**: Access your documents from anywhere with cloud synchronization
-- **📱 Mobile Responsive**: Optimized experience across all devices
-- **🎨 Rich Text Editing**: Powerful editor with formatting, tables, and media support
-- **📄 Export Options**: Export documents in multiple formats (DOCX, TXT)
-- **🔍 Document Search**: Quickly find documents with powerful search functionality
-- **⭐ Organization**: Star, archive, and tag your documents for better organization
-- **🌙 Dark Mode**: Eye-friendly dark theme for extended writing sessions
-- **📊 Writing Analytics**: Word count, character count, and reading time tracking
+- **Distraction-Free Writing**: Clean, minimal interface focused on content creation
+- **Auto-Save**: Never lose your work with automatic saving
+- **Cloud Sync**: Access your documents from anywhere with cloud synchronization
+- **Mobile Responsive**: Optimized experience across all devices
+- **Rich Text Editing**: Powerful editor with formatting, tables, and media support
+- **Export Options**: Export documents in multiple formats (DOCX, TXT)
+- **Document Search**: Quickly find documents with powerful search functionality
+- **Organization**: Star, archive, and tag your documents for better organization
+- **Dark Mode**: Eye-friendly dark theme for extended writing sessions
+- **Writing Analytics**: Word count, character count, and reading time tracking
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -75,8 +75,11 @@ A modern, distraction-free writing editor built with React, TypeScript, and Supa
 ## 📸 Screenshots
 
 ### Desktop Experience
+<img width="1777" height="899" alt="Screenshot 2025-09-21 at 01 05 52" src="https://github.com/user-attachments/assets/5f7913e0-38cb-4d7a-a508-1e3d8b3fe5ef" />
 
 ### Mobile Experience
+
+<img width="368" height="803" alt="Screenshot 2025-09-21 at 01 06 08" src="https://github.com/user-attachments/assets/2cefcd89-c01d-49e2-8260-5ac546c7d954" />
 
 ## 🏗️ Tech Stack
 
@@ -161,9 +164,9 @@ REACT_APP_SUPABASE_ANON_KEY=
 REACT_APP_ENCRYPTION_KEY=
 ```
 
-## 🤝 Contributing
+## Contributing
 
-I welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+I welcome contributions.
 
 ### Development Workflow
 
@@ -195,15 +198,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - 📧 Email: alegbeyemi@gmail.com
-
-## 🗺️ Roadmap
-
-- [ ] **v1.1**: Real-time collaboration improvements
-- [ ] **v1.2**: Advanced export formats (PDF, Markdown)
-- [ ] **v1.3**: Team workspaces and permissions
-- [ ] **v1.4**: AI-powered writing assistance
-- [ ] **v1.5**: Plugin system for extensions
-- [ ] **v2.0**: Native mobile applications
 
 ---
 
