@@ -67,6 +67,11 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
               "border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic",
           },
         },
+        paragraph: {
+          HTMLAttributes: {
+            class: "whitespace-pre-wrap",
+          },
+        },
       }),
       CodeBlock.configure({
         HTMLAttributes: {
@@ -123,6 +128,7 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
       attributes: {
         class:
           "prose max-w-none focus:outline-none min-h-[200px] pt-4 sm:pt-8 pl-4 sm:pl-8 pr-2 pb-4 m-0 prose-sm sm:prose-base",
+        style: "white-space: pre-wrap; word-wrap: break-word;",
       },
       handleKeyDown: (view, event) => {
         // Keyboard shortcuts

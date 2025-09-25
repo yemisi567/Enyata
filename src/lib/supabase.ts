@@ -1,8 +1,14 @@
 import { createClient } from '@supabase/supabase-js'
 import { SUPABASE_CONFIG } from '../config/supabase'
 
+// Check if we're in development mode
+const isDevelopment = process.env.NODE_ENV === 'development'
+
 if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey) {
-  throw new Error('Supabase configuration is incomplete')
+  if (isDevelopment) {
+    console.warn('Supabase configuration is incomplete. Please check your .env file.')
+  }
+  throw new Error('Supabase configuration is incomplete. Please check your environment variables.')
 }
 
 export const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey, {
