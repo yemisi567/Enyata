@@ -86,6 +86,8 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
 
   const convertHtmlToBlocks = (html: string): Block[] => {
     const tempDiv = document.createElement("div");
+    // Preserve whitespace when parsing HTML
+    tempDiv.style.whiteSpace = "pre-wrap";
     tempDiv.innerHTML = html;
 
     const blocks: Block[] = [];
@@ -96,7 +98,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
         const element = node as Element;
         const tagName = element.tagName.toLowerCase();
         const content = (element.textContent || "").trim();
-        const htmlContent = element.outerHTML; 
+        const htmlContent = element.outerHTML;
 
         switch (tagName) {
           case "h1":
@@ -111,7 +113,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
                 id: `block-${blockId++}`,
                 type: "heading",
                 content,
-                htmlContent, 
+                htmlContent,
                 level,
               });
             }
@@ -122,7 +124,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
                 id: `block-${blockId++}`,
                 type: "quote",
                 content,
-                htmlContent, 
+                htmlContent,
               });
             }
             break;
@@ -134,7 +136,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
                 id: `block-${blockId++}`,
                 type: "code",
                 content: codeContent,
-                htmlContent, 
+                htmlContent,
                 language: "typescript",
               });
             }
@@ -153,7 +155,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
               id: `block-${blockId++}`,
               type: "image",
               content: "",
-              htmlContent, 
+              htmlContent,
               src: img.src,
               alt: img.alt,
             });
@@ -164,7 +166,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
                 id: `block-${blockId++}`,
                 type: "text",
                 content,
-                htmlContent, 
+                htmlContent,
               });
             }
             break;
@@ -182,7 +184,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
                 id: `block-${blockId++}`,
                 type: "text",
                 content,
-                htmlContent, 
+                htmlContent,
               });
             } else {
               node.childNodes.forEach(processNode);
@@ -196,7 +198,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
             id: `block-${blockId++}`,
             type: "text",
             content: text,
-            htmlContent: `<p>${text}</p>`, 
+            htmlContent: `<p>${text}</p>`,
           });
         }
       } else {
