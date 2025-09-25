@@ -46,7 +46,6 @@
 @layer components {
   .prose {
     @apply text-gray-700 dark:text-gray-300 leading-relaxed;
-    white-space: pre-wrap;
   }
   
   .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
@@ -200,8 +199,6 @@
     background: transparent;
     overflow-y: auto;
     height: 100%;
-    white-space: pre-wrap;
-    word-wrap: break-word;
   }
 
   @media (min-width: 640px) {
@@ -211,7 +208,6 @@
   }
 
   .ProseMirror p {
-    white-space: pre-wrap;
     word-wrap: break-word;
   }
 

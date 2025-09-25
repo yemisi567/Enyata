@@ -108,12 +108,8 @@ const App: React.FC = () => {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
-        .then((registration) => {
-          console.log("SW registered: ", registration);
-        })
-        .catch((registrationError) => {
-          console.log("SW registration failed: ", registrationError);
-        });
+        .then((registration) => {})
+        .catch((registrationError) => {});
     }
 
     return () => {
@@ -133,16 +129,12 @@ const App: React.FC = () => {
         ...updates,
         lastModified: new Date(),
       };
-      console.log("App: Updated document:", updatedDoc);
+
       setCurrentDocument(updatedDoc);
       setHasUnsavedChanges(true);
 
       // Update in Supabase
       try {
-        console.log(
-          "Attempting to update document in Supabase with ID:",
-          currentDocument.id
-        );
         const result = await updateSupabaseDocument(currentDocument.id, {
           title: updatedDoc.title,
           content: updatedDoc.content,
@@ -152,7 +144,7 @@ const App: React.FC = () => {
           tags: updatedDoc.tags,
           word_count: updatedDoc.wordCount,
         });
-        console.log("Document updated in Supabase successfully:", result);
+        console.log("Document updated in Supabase successfully:");
       } catch (error) {
         console.error("Failed to update document in Supabase:", error);
         toast.error("Failed to save document");
@@ -225,7 +217,7 @@ const App: React.FC = () => {
 
       setCurrentDocument(writeFlowDoc);
       setHasUnsavedChanges(false);
-      console.log("App: Document created successfully:", writeFlowDoc);
+      console.log("App: Document created successfully:");
     } catch (error) {
       console.error("App: Failed to create document:", error);
     }
@@ -338,7 +330,7 @@ const App: React.FC = () => {
         .trim();
       return text.split(/\s+/).filter((word: string) => word.length > 0).length;
     } catch (error) {
-      console.log("Error in fallback word count:", error);
+      console.log("Error in fallback word count:");
       return 0;
     }
   };
@@ -346,20 +338,8 @@ const App: React.FC = () => {
   const handleContentChange = useCallback(
     (content: any) => {
       if (!currentDocument) return;
-
-      console.log("Content received:", content, "Type:", typeof content);
-      console.log(
-        "Content array details:",
-        Array.isArray(content)
-          ? content.map((item, index) => ({
-              index,
-              type: item.type,
-              content: item.content,
-            }))
-          : "Not an array"
-      );
       const newWordCount = calculateWordCount(content);
-      console.log("Calculated word count:", newWordCount);
+      console.log("Calculated word count:");
 
       setCurrentDocument((prev) =>
         prev ? { ...prev, content, wordCount: newWordCount } : null
