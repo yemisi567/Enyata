@@ -66,19 +66,14 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
 
   // Update currentHtmlContent when initialContent changes
   useEffect(() => {
-    console.log(
-      "TipTapWrapper: Initial content changed, updating HTML content"
-    );
     const newHtmlContent = htmlContent;
     setCurrentHtmlContent(newHtmlContent);
   }, [htmlContent]);
 
   const handleContentChange = useCallback(
     (html: string) => {
-      console.log("TipTapWrapper: Content changed, HTML:", html);
       setCurrentHtmlContent(html);
       const blocks = convertHtmlToBlocks(html);
-      console.log("TipTapWrapper: Converted to blocks:", blocks);
       onContentChange?.(blocks);
     },
     [onContentChange]
@@ -97,7 +92,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
       if (node.nodeType === Node.ELEMENT_NODE) {
         const element = node as Element;
         const tagName = element.tagName.toLowerCase();
-        const content = (element.textContent || "").trim();
+        const content = element.textContent || "";
         const htmlContent = element.outerHTML;
 
         switch (tagName) {
@@ -108,7 +103,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
           case "h5":
           case "h6":
             const level = parseInt(tagName.charAt(1));
-            if (content && content.length > 0) {
+            if (content && content.trim().length > 0) {
               blocks.push({
                 id: `block-${blockId++}`,
                 type: "heading",
@@ -119,7 +114,7 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
             }
             break;
           case "blockquote":
-            if (content && content.length > 0) {
+            if (content && content.trim().length > 0) {
               blocks.push({
                 id: `block-${blockId++}`,
                 type: "quote",
@@ -192,8 +187,8 @@ const TipTapWrapper: React.FC<TipTapWrapperProps> = ({
             return;
         }
       } else if (node.nodeType === Node.TEXT_NODE) {
-        const text = node.textContent?.trim();
-        if (text && text.length > 0 && node.parentNode === tempDiv) {
+        const text = node.textContent;
+        if (text && text.trim().length > 0 && node.parentNode === tempDiv) {
           blocks.push({
             id: `block-${blockId++}`,
             type: "text",

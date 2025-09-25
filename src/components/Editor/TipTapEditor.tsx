@@ -67,11 +67,6 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
               "border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic",
           },
         },
-        paragraph: {
-          HTMLAttributes: {
-            class: "whitespace-pre-wrap",
-          },
-        },
       }),
       CodeBlock.configure({
         HTMLAttributes: {
@@ -128,7 +123,6 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
       attributes: {
         class:
           "prose max-w-none focus:outline-none min-h-[200px] pt-4 sm:pt-8 pl-4 sm:pl-8 pr-2 pb-4 m-0 prose-sm sm:prose-base",
-        style: "white-space: pre-wrap; word-wrap: break-word;",
       },
       handleKeyDown: (view, event) => {
         // Keyboard shortcuts
@@ -184,10 +178,6 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
   // Update editor content when initialContent changes
   useEffect(() => {
     if (editor && initialContent) {
-      console.log(
-        "TipTapEditor: Updating editor content with:",
-        initialContent
-      );
       editor.commands.setContent(initialContent);
     }
   }, [editor, initialContent]);
@@ -323,7 +313,6 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
       return;
     }
 
-    console.log("Opening video file picker...");
     const input = document.createElement("input");
     input.type = "file";
     input.accept = "video/*";
@@ -335,16 +324,8 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
 
     input.onchange = (e) => {
       const file = (e.target as HTMLInputElement).files?.[0];
-      console.log("File selected:", file);
 
       if (file) {
-        console.log("File details:", {
-          name: file.name,
-          size: file.size,
-          type: file.type,
-          lastModified: file.lastModified,
-        });
-
         // Check if the file is actually a video
         if (!file.type.startsWith("video/")) {
           toast.error("Please select a valid video file.");
@@ -358,12 +339,11 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
         }
 
         const url = URL.createObjectURL(file);
-        console.log("Created object URL:", url);
 
         // Test if the URL is accessible
         fetch(url, { method: "HEAD" })
           .then((response) => {
-            console.log("Video URL accessible:", response.ok);
+            console.log("Video URL accessible:");
             if (!response.ok) {
               console.warn("Video URL might not be accessible");
             }
@@ -390,7 +370,7 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
           </div>
         `;
 
-        console.log("Inserting video HTML:", videoHtml);
+        console.log("Inserting video HTML:");
 
         try {
           editor.chain().focus().insertContent(videoHtml).run();
@@ -406,7 +386,6 @@ const TipTapEditor: React.FC<TipTapEditorProps> = ({
           try {
             const simpleVideoHtml = `<video controls width="640" height="480" style="max-width: 100%; height: auto; background: #000;" playsinline><source src="${url}" type="${file.type}"><p>Your browser does not support the video tag.</p></video>`;
             editor.chain().focus().insertContent(simpleVideoHtml).run();
-            console.log("Video inserted with fallback method");
             toast.success(`Video "${file.name}" uploaded successfully!`);
           } catch (fallbackError) {
             console.error("Fallback method also failed:", fallbackError);
